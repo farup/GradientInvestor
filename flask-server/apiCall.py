@@ -26,18 +26,14 @@ def get_market_status():
 
 def get_stock(ticker):
     time.sleep(1)
-    info = yf.Ticker(ticker)  # ^GSPC represents the S&P 500 index
-    return info.info
+    stock = yf.Ticker(ticker)  # ^GSPC represents the S&P 500 index
+    return stock.info
 
 
 def get_stock_fin(ticker):
     time.sleep(1)
     info = yf.Ticker(ticker)  # ^GSPC represents the S&P 500 index
     return info.financials
-
-
-def get_index_market():
-    pass
 
 
 def read_csv(filename):
@@ -47,10 +43,7 @@ def read_csv(filename):
 #status = get_market_status()
 
 
-def historical(period):
-    msft = yf.Ticker("MSFT")
-    hist = msft.history(period='5d')
-
-    print(hist["Open"])
-    print("Halooo", type(hist))
+def historical_close(ticker, period):
+    stock = yf.Ticker(ticker)
+    hist = stock.history(period=period)
     return hist["Close"].to_json()

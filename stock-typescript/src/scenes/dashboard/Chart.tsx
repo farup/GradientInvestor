@@ -22,17 +22,13 @@ type historicalData = {
     [key: string]: number
 }
 
-export const Chart = () => {
-
-    const [data, setData] = useState<historicalData>(hist)
-    const [filter, setFilter] = useState()
+export const Chart = ({ details }: historicalData) => {
 
     const formatData = () => {
-        return Object.entries(data).map(([uTime, price]) => {
-            console.log(converUnixTimeToDate(Number(uTime)))
+        return Object.entries(details).map(([uTime, price]) => {
+            console.log(price)
 
             return {
-
                 value: price.toFixed(2),
                 date: converUnixTimeToDate(Number(uTime))
             }
@@ -60,7 +56,7 @@ export const Chart = () => {
                         strokeWidth={0}
                         fill="url(#chartColor)" />
                     <Tooltip />
-                    <XAxis dataKey={"date"} />
+                    <XAxis dataKey={"date"} label={{ fill: 'white' }} />
                     <YAxis domain={["datamin", "dataMax"]} />
 
                 </AreaChart>

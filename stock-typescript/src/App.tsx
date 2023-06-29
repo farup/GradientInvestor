@@ -5,6 +5,8 @@ import { Dashboard } from './scenes/dashboard'
 import { AboutUs } from './scenes/aboutUs'
 import { News } from './scenes/news/news'
 import { Analytics } from './scenes/analytics'
+import { StockProivder } from './context/StockContext'
+import { initState } from './context/StockContext'
 
 
 function App() {
@@ -28,15 +30,16 @@ function App() {
 
   return (
     <div className='app bg-gray-20'>
-      <Navbar
-        isTopOfPage={isTopOfPage}
-        selectedPage={selectedPage}
-        setSelectedPage={setSelectedPage}
-      />
-      <Dashboard setSelectedPage={setSelectedPage} />
-      <Analytics />
-      <News />
-      <AboutUs />
+      <StockProivder inputValue={initState.inputValue} >
+        <Navbar
+          isTopOfPage={isTopOfPage}
+          selectedPage={selectedPage}
+          setSelectedPage={setSelectedPage} />
+        <Dashboard setSelectedPage={setSelectedPage} />
+        <Analytics />
+        <News />
+        <AboutUs />
+      </StockProivder>
     </div>)
 
 }

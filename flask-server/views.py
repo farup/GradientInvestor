@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from apiCall import get_market_status, get_stock, get_stock_fin, historical
+from apiCall import get_market_status, get_stock, get_stock_fin, historical_close
 import json
 
 views = Blueprint(__name__, "views")
@@ -12,30 +12,23 @@ def market():
     print(data)
     return get_market_status()
 
+# http://localhost:5000/stock?ticker=GOOGL
 
-@views.route("/stock")
+
+@views.route("/stock", methods=['GET'])
 def stock():
-    data = get_stock('aapl')
+    ticker = request.args.get('ticker')
+    print("-------------------------------", ticker)
+    data = get_stock(ticker)
     print(data)
     return data
 
 
-@views.route("/stock_fin")
-def stock_fin():
-    data = get_stock_fin('aapl')
-    return data
-
-
-@views.route("/profile/")
-def progile():
-    args = request.args
-    name = args.get("name")
-    return f"Velkommen {name}"
-
-
-@views.route("/hist")
-def hist():
-    return historical("5d")
+@views.route("/historical",  methods=["GET"])
+def historical():
+    ticker = request.args.get('ticker')
+    period = request.args.get('periode')
+    return historical_close(ticker, period)
 
 
 @views.route("/json")
