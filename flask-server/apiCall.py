@@ -40,7 +40,7 @@ def read_csv(filename):
     data = pd.read_csv(filename)
     return data.to_json()
 # Call the function to get the market status
-#status = get_market_status()
+# status = get_market_status()
 
 
 def historical_close(ticker, period):

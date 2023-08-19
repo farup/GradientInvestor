@@ -1,8 +1,15 @@
 ### Gradient Investor 
 
-## Setup 
+Project for analysing and building custom stock trading robots.  
+Read more about tech stack in each folder. 
 
-Frontend is initialized as a react and typescript project with "npm create vite@latest". To run locally;
+## Innhold 
+- [Set Up Locally](#setup-locally)
+- [Docker](#docker)
+
+## Setup Locally
+
+Frontend is initialized as a react and typescript project with "npm create vite@latest". 
 
 **2. Clone project**
 ```bash
@@ -46,12 +53,5 @@ C:\Users\user\folder>project>stock-typescript>npm run dev
 (env) C:\Users\user\folder>project>flask-server>python server.py
 ```
 
-## Innhold 
-- [Introduksjon](#introduksjon)
-- [State management](#state-management)
-- [Komponenter](#komponenter)
-- [Ekstern Bibliotek](#ekstern-bibliotek)
-- [Testing](#testing)
-
-## Introduksjon
+## Setup Docker
 

@@ -27,8 +27,6 @@ export const Dashboard = ({ setSelectedPage }: Props) => {
     const [market, setMarket] = useState(tickerInfo)
     const [marketHist, setMarketHist] = useState<historicalData>(hist)
 
-
-
     useEffect(() => {
         async function fecthTickerInfo(): Promise<void> {
             const data = { ticker: inputValue }

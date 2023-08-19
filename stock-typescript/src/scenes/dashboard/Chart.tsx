@@ -27,7 +27,6 @@ export const Chart = ({ details }: historicalData) => {
     const formatData = () => {
         return Object.entries(details).map(([uTime, price]) => {
             console.log(price)
-
             return {
                 value: price.toFixed(2),
                 date: converUnixTimeToDate(Number(uTime))
