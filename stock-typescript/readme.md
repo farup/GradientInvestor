@@ -77,7 +77,7 @@ Codesnippet above displays how card component is reusable and children props are
 
 Below follows some hooks used in this project
 
-*useState()* hook allows to delcare a state variable, and re-render the component (and it's child components) when calling setStat().
+***useState()*** hook allows to delcare a state variable, and re-render the component (and it's child components) when calling setStat().
 
 ```bash
 const [stock, setStock] = useState(tickerInfo)
@@ -88,7 +88,7 @@ setStock(newTickerInfo)
 Code show initialization and use of useState() with start value, tickerinfo. Interface could also be provided useState<type>()
 
 
-*useEffect()* runs when the component mounts, or when state change specified in the array.    return a clean-up function. 
+***useEffect()*** runs when the component mounts, or when state change specified in the array.    return a clean-up function. 
 
 ```bash
 useEffect(() => {
@@ -101,9 +101,56 @@ useEffect(() => {
 }, [ticker])
 ```
 
+***useReducer()***
+Often an alternative to useState() when complex state logic. Overall when action is dispatched it'is caught in the reducer. 
+
+```bash 
+
+const enum REDUCER_ACTION_TYPE {
+    SETTICKER,
+}
+
+type ReducerAction = {
+    type: REDUCER_ACTION_TYPE
+}
+```
+
+
+```bash 
+
+const reducer = (state: , action: ) typeof initState => {
+    switch (action.type) {
+        case REDUCER_ACTION_TYPE.SETTICKER:
+            return {...state, inputValue: action.payload ?? ""}
+        default:
+            throw new Error()
+    }
+}
+```
+Spread the existing state (...state) and overwriting the one we would like to change, inputValue. Reciving payload from the user. 
+
+Can use this as useState, but will recive state and dispatch. 
+
+```bash 
+const [state, dispatch] = useReducer(reducer, iniState)
+
+
+const handlTicket = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+        type: REDUCER_ACTION_TYPE.NEW_INPUT, 
+        payload: e.target.value
+    })
+} 
+```
+
+
 ### Tailwind
 
 ## State management
+
+**Context API**
+
+
 
 ## Components
 

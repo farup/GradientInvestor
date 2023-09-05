@@ -1,13 +1,12 @@
 import { Card } from "./card"
 import { useState, useEffect } from "react"
-
+import { useStockText } from "../../context/StockContext"
 
 type Props = {}
 
 export const Overview = ({ details }: any) => {
 
     const [change, setChange] = useState<number>(0)
-
 
     useEffect(() => {
         const open = details['open']
@@ -31,11 +30,7 @@ export const Overview = ({ details }: any) => {
                     <span>{details['currentPrice']} {details['currency']}</span>
                     <p className={` ${change > 0 ? "text-lime-500" : "text-red-500"}`}>{change}%</p>
                 </div>
-
-
             </div>
-
-
         </Card>
     )
 }
