@@ -13,11 +13,6 @@ import {
 } from "recharts"
 import { converUnixTimeToDate } from "../../helpers/data-helpers"
 
-type Prop = {
-
-}
-
-
 type historicalData = {
     [key: string]: number
 }
@@ -37,7 +32,6 @@ export const Chart = ({ details }: historicalData) => {
     return (
         <Card>
             <ul className="flex absolute top-2 right-2 z-40">
-
             </ul>
             <ResponsiveContainer>
                 <AreaChart data={formatData()}>

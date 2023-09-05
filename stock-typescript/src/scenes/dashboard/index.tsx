@@ -24,19 +24,17 @@ type historicalData = {
 export const Dashboard = ({ setSelectedPage }: Props) => {
     const isAboveMediumScreens = useMediaQuery("(min-width:1060px)")
     const { inputValue, handleSearchInput } = useStockText()
-    const [market, setMarket] = useState(tickerInfo)
-    const [marketHist, setMarketHist] = useState<historicalData>(hist)
+    const [stock, setStock] = useState(tickerInfo)
+    const [marketHist, setMarketHist] = useState(hist)
 
     useEffect(() => {
         async function fecthTickerInfo(): Promise<void> {
             const data = { ticker: inputValue }
             const queryParams = new URLSearchParams(data).toString()
-
             try {
                 const response = await fetch(`http://localhost:5000/stock?${queryParams}`)
                 const dataJson: any = await response.json()
-                setMarket(dataJson)
-
+                setStock(dataJson)
             } catch (error) {
                 console.log("heisann")
             }
@@ -66,13 +64,13 @@ export const Dashboard = ({ setSelectedPage }: Props) => {
             <div className="flex flex-col items-center mt-28 gap-2">
                 <div className='gap-4 grid grid-cols-3 md:grid-cols-1 xl:grid-cols-3 grid-rows-4 md:grid-rows-5 xl:grid' >
                     <div className='col-span-2 md:col-span-2 xl:col-span-3 row-span-1' >
-                        <Overview details={market} />
+                        <Overview details={stock} />
                     </div>
                     <div className='col-span-2 md:col-span-2 xl:col-span-3 row-span-3' >
                         <Chart details={marketHist} />
                     </div>
                     <div className='md:col-span-2 row-span-3' >
-                        <Details details={market} />
+                        <Details details={stock} />
                     </div>
                 </div>
 
